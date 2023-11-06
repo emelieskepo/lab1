@@ -1,4 +1,5 @@
 import java.awt.*;
+//hejsvej
 
 public class Cars {
 
@@ -45,7 +46,7 @@ public class Cars {
     }
 
     public double speedFactor(){
-
+        return speedFactor();
     }
 
     //implementera en standardmetod som
