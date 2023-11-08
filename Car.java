@@ -1,7 +1,7 @@
 import java.awt.*;
-//hejsvej
 
-public class Cars {
+public abstract class Car { //abstrakt eftersom det inte finns någon "allmän" bil
+    //egna implementationer av de abstrakta metoderna
 
     public int nrDoors; // Number of doors on the car
     public double enginePower; // Engine power of the car
@@ -9,12 +9,12 @@ public class Cars {
     public Color color; // Color of the car
     public String modelName; // The car model name
 
-    public Cars(int nrDoors, double enginePower, double currentSpeed, Color color, String modelName) {
+    public Car(int nrDoors, double enginePower, Color color, String modelName) {
         this.nrDoors = nrDoors;
         this.enginePower = enginePower;
-        this.currentSpeed = currentSpeed;
         this.color = color;
         this.modelName = modelName;
+        stopEngine();
     }
 
     public int getNrDoors(){
@@ -45,18 +45,12 @@ public class Cars {
         currentSpeed = 0;
     }
 
-    public double speedFactor(){
-        return speedFactor();
-    }
+    public abstract double speedFactor();
 
-    //implementera en standardmetod som
-    //båda subklasserna kan överskugga
     public void incrementSpeed(double amount){
-
     }
 
     public void decrementSpeed(double amount){
-
     }
 
     // TODO fix this method according to lab pm
