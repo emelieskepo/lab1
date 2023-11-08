@@ -2,60 +2,22 @@ import java.awt.*;
 
 public class Volvo240 extends Car{
 
-    public final static double trimFactor = 1.25;
-    //public int nrDoors; // Number of doors on the car
-    //public double enginePower; // Engine power of the car
-    //public double currentSpeed; // The current speed of the car
-    //public Color color; // Color of the car
-    //public String modelName; // The car model name
-    
+    private final static double trimFactor = 1.2;
+
     public Volvo240(){
         super(4, 100, Color.black, "Volvo240");
-        //Car(int nrDoors, double enginePower, Color color, String modelName)
-        //nrDoors = 4;
-        //enginePower = 100;
-        //color = Color.black;
-        //modelName = "Volvo240";
-        //stopEngine();
-    }
-    
-    public int getNrDoors(){
-        return nrDoors;
-    }
-    public double getEnginePower(){
-        return enginePower;
     }
 
-    public double getCurrentSpeed(){
-        return currentSpeed;
-    }
-
-    public Color getColor(){
-        return color;
-    }
-
-    public void setColor(Color clr){
-	    color = clr;
-    }
-
-    public void startEngine(){
-	    currentSpeed = 0.1;
-    }
-
-    public void stopEngine(){
-	    currentSpeed = 0;
-    }
-    
     public double speedFactor(){
-        return enginePower * 0.01 * trimFactor;
+        return getEnginePower() * 0.01 * trimFactor;
     }
 
     public void incrementSpeed(double amount){
-	    currentSpeed = Math.min(getCurrentSpeed() + speedFactor() * amount,enginePower);
+        setCurrentSpeed(Math.min(getCurrentSpeed() + speedFactor() * amount,getEnginePower()));
     }
 
     public void decrementSpeed(double amount){
-        currentSpeed = Math.max(getCurrentSpeed() - speedFactor() * amount,0);
+        setCurrentSpeed(Math.max(getCurrentSpeed() - speedFactor() * amount,0));
     }
 
     // TODO fix this method according to lab pm

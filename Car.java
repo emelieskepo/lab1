@@ -1,15 +1,18 @@
 import java.awt.*;
 
-public abstract class Car { //abstrakt eftersom det inte finns någon "allmän" bil
+public abstract class Car implements Movable{ //abstrakt eftersom det inte finns någon "allmän" bil
     //egna implementationer av de abstrakta metoderna
 
-    public int nrDoors; // Number of doors on the car
-    public double enginePower; // Engine power of the car
-    public double currentSpeed; // The current speed of the car
-    public Color color; // Color of the car
-    public String modelName; // The car model name
+    private int nrDoors; // Number of doors on the car
+    private double enginePower; // Engine power of the car
+    private double currentSpeed; // The current speed of the car
+    private Color color; // Color of the car
+    private String modelName; // The car model name
+    private double xPos = 0;
+    private double yPos = 0;
+    private String direction = "NORTH";
 
-    public Car(int nrDoors, double enginePower, Color color, String modelName) {
+    public Car(int nrDoors, double enginePower, Color color, String modelName) { //Konstruktor
         this.nrDoors = nrDoors;
         this.enginePower = enginePower;
         this.color = color;
@@ -29,6 +32,10 @@ public abstract class Car { //abstrakt eftersom det inte finns någon "allmän" 
         return currentSpeed;
     }
 
+    public void setCurrentSpeed(double currentSpeed) {
+        this.currentSpeed = currentSpeed;
+    }
+
     public Color getColor(){
         return color;
     }
@@ -45,12 +52,37 @@ public abstract class Car { //abstrakt eftersom det inte finns någon "allmän" 
         currentSpeed = 0;
     }
 
-    public abstract double speedFactor();
+    public abstract double speedFactor(); //metoden finns men den är inte implementerad
 
-    public void incrementSpeed(double amount){
+    public abstract void incrementSpeed(double amount);
+
+    public abstract void decrementSpeed(double amount);
+
+    public void move(){ //currentSpeed
+        switch (direction) {
+            case "NORTH" -> this.yPos += getCurrentSpeed();
+            case "EAST" -> this.xPos += getCurrentSpeed();
+            case "SOUTH" -> this.yPos -= getCurrentSpeed();
+            case "WEST" -> this.xPos -= getCurrentSpeed();
+        }
     }
 
-    public void decrementSpeed(double amount){
+    public void turnLeft(){
+        switch (direction) {
+            case "NORTH" -> this.direction = "WEST";
+            case "EAST" -> this.direction = "NORTH";
+            case "SOUTH" -> this.direction = "EAST";
+            case "WEST" -> this.direction = "SOUTH";
+        }
+    }
+
+    public void turnRight(){
+        switch (direction) {
+            case "WEST" -> this.direction = "NORTH";
+            case "NORTH" -> this.direction = "EAST";
+            case "EAST" -> this.direction = "SOUTH";
+            case "SOUTH" -> this.direction = "WEST";
+        }
     }
 
     // TODO fix this method according to lab pm
