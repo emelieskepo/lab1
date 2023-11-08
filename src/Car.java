@@ -24,6 +24,18 @@ public abstract class Car implements Movable{ //abstrakt eftersom det inte finns
         return nrDoors;
     }
 
+    public String getDirection() {
+        return direction;
+    }
+
+    public void setDirection(String direction){
+        this.direction = direction;
+    }
+
+    public double getXPos(){
+        return xPos;
+    }
+
     public double getEnginePower(){
         return enginePower;
     }
@@ -78,7 +90,7 @@ public abstract class Car implements Movable{ //abstrakt eftersom det inte finns
 
     public void turnRight(){
         switch (direction) {
-            case "WEST" -> this.direction = "NORTH";
+            case "WEST" -> this.direction = "NORTH"; //såhär eller setDirection
             case "NORTH" -> this.direction = "EAST";
             case "EAST" -> this.direction = "SOUTH";
             case "SOUTH" -> this.direction = "WEST";
