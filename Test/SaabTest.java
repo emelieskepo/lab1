@@ -1,5 +1,4 @@
 import org.junit.Test;
-import java.awt.*;
 import static org.junit.Assert.*;
 
 public class SaabTest {
@@ -44,3 +43,4 @@ public class SaabTest {
         //setCurrentSpeed(getCurrentSpeed() - speedFactor() * amount);
     }
 }
+
