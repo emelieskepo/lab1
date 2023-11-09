@@ -11,6 +11,7 @@ public class SaabTest {
         assertTrue(saab.isTurboOn());
     }
 
+
     @Test
     public void saabEnginePower(){
         assertEquals(125, saab.getEnginePower(), 0.0001);
