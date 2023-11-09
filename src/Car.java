@@ -1,9 +1,6 @@
 import java.awt.*;
 
-public abstract class Car implements Movable{ //abstrakt eftersom det inte finns någon "allmän" bil
-    //egna implementationer av de abstrakta metoderna
-    // ÄR DETTA EN SUPERKLASS?
-    //INNEBÄR POLYMORFISM ATT VI FÅR HA OLIKA SUBKLASSER SOM "OBJEKT" TILL VÅR SUPERKLASS?
+public abstract class Car implements Movable{
 
     private int nrDoors; // Number of doors on the car
     private double enginePower; // Engine power of the car

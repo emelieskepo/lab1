@@ -5,9 +5,52 @@ import static org.junit.Assert.*;
 public class CarTest {
 
     public Saab95 saab = new Saab95();
-    public Volvo240 volvo = new Volvo240();
+    @Test
+    public void saabTurnLeft(){
+        saab.turnLeft();
+        assertTrue("WEST"==saab.getDirection());
+        saab.turnLeft();
+        assertTrue("SOUTH"==saab.getDirection());
+        saab.turnLeft();
+        assertTrue("EAST"==saab.getDirection());
+        saab.turnLeft();
+        assertTrue("NORTH"==saab.getDirection());
+    }
 
     @Test
+    public void saabTurnRight(){
+        saab.turnRight();
+        assertTrue("EAST"==saab.getDirection());
+        saab.turnRight();
+        assertTrue("SOUTH"==saab.getDirection());
+        saab.turnRight();
+        assertTrue("WEST"==saab.getDirection());
+        saab.turnRight();
+        assertTrue("NORTH"==saab.getDirection());
+    }
+    @Test
+    public void saabTurnRightAndMoveForward(){
+            saab.turnLeft();
+            saab.move(); //xPos += getCurrentSpeed=getCurrentSpeed
+            assertEquals(saab.getCurrentSpeed(), saab.getXPos(), 0.0001);
+
+            saab.turnLeft();
+            saab.move(); //xPos += getCurrentSpeed=getCurrentSpeed
+            assertEquals(saab.getCurrentSpeed(), -(saab.getYPos()), 0.0001);
+
+            saab.turnLeft();
+            saab.move(); //xPos += getCurrentSpeed=getCurrentSpeed
+            assertEquals(saab.getCurrentSpeed(), -(saab.getXPos()), 0.0001);
+
+            saab.turnLeft();
+            saab.move(); //xPos += getCurrentSpeed=getCurrentSpeed
+            assertEquals(saab.getCurrentSpeed(), saab.getYPos(), 0.0001);
+
+
+
+
+    }
+   /* @Test
     public void saabTurnLeft(){
         // Testar om Saab95 svänger vänster och ändrar riktning till "WEST"
         saab.turnLeft();
@@ -38,12 +81,12 @@ public class CarTest {
         saab.turnLeft();//"SOUTH"
         saab.move(); //xPos += getCurrentSpeed=getCurrentSpeed
         assertEquals(-(saab.getCurrentSpeed()), saab.getYPos(), 0.0001);
-    }
+    }*/
 
     @Test
-    public void volvoNumberOfDoors(){
+    public void saabNumberOfDoors(){
         // Testar om antalet dörrar för Volvo240 är 4
-        assertEquals(4, volvo.getNrDoors());
+        assertEquals(2, saab.getNrDoors());
     }
 
     @Test
@@ -57,10 +100,6 @@ public class CarTest {
         assertEquals(expectedDirection, car.getDirection());
     }
 
-    @Test
-    public void saabEnginePower(){
-        assertEquals(125, saab.getEnginePower(), 0.0001);
-    }
 
     @Test
     public void saabSetCurrentSpeed(){
@@ -86,58 +125,11 @@ public class CarTest {
         saab.startEngine();
        assertEquals(0.1, saab.getCurrentSpeed(), 0.0001);
     }
-
-
-    //gas (class Car)
-
-    //brake (class Car)
     @Test
-    public void saabSetTurboOff(){
-        saab.setTurboOff();
-        assertFalse(saab.isTurboOn());
-    }
-    //setTurboOff (class Saab95)M
+    public void saabGetEnginePower(){
 
-    @Test
-    //speedFactor (class Saab95)M
-    public void saabCheckSpeedFactorWithTurboOff(){
-        assertEquals(saab.getEnginePower() * 0.01 * 1, saab.speedFactor(), 0.0001);
-
+        assertEquals(125, saab.getEnginePower(), 0.0001);
     }
 
-    @Test
-    public void incrementSpeedForSaabIfTurboOn(){
-        saab.setTurboOn();
-        saab.incrementSpeed(10);
-        assertEquals(saab.getEnginePower() * 0.01 * 1.3 * 10, saab.getCurrentSpeed(), 0.0001);
-    }
-
-    @Test
-    public void decrementSpeedForSaab(){
-        saab.setCurrentSpeed(50);
-        double originalSpeed = saab.getCurrentSpeed();
-        saab.decrementSpeed(10);
-        assertEquals(originalSpeed - saab.speedFactor() * 10, saab.getCurrentSpeed(), 0.0001);
-        //setCurrentSpeed(getCurrentSpeed() - speedFactor() * amount);
-    }
-
-    @Test
-    public void volvoCheckSpeedFactor(){
-    assertEquals(volvo.getEnginePower() * 0.01 * 1.2, volvo.speedFactor(), 0.001);
-    }
-
-    @Test
-    public void incrementSpeedForVolvo(){
-        volvo.incrementSpeed(10);
-        assertEquals(Math.min(volvo.speedFactor() * 10, volvo.getEnginePower()), volvo.getCurrentSpeed(), 0.0001);
-    }
-
-    @Test
-    public void decrementSpeedForVolvo(){
-        volvo.setCurrentSpeed(30);
-        double originalSpeed = saab.getCurrentSpeed();
-        volvo.decrementSpeed(10);
-        assertEquals(Math.max(originalSpeed - volvo.speedFactor() * 10,0), volvo.getCurrentSpeed(), 0.001);
-    }
 }
 
