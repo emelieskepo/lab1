@@ -23,7 +23,6 @@ public class SaabTest {
         assertFalse(saab.isTurboOn());
     }
     @Test
-    //speedFactor (class Saab95)M
     public void saabCheckSpeedFactorWithTurboOff(){
         assertEquals(saab.getEnginePower() * 0.01 * 1, saab.speedFactor(), 0.0001);
 
@@ -41,7 +40,7 @@ public class SaabTest {
         double originalSpeed = saab.getCurrentSpeed();
         saab.decrementSpeed(10);
         assertEquals(originalSpeed - saab.speedFactor() * 10, saab.getCurrentSpeed(), 0.0001);
-        //setCurrentSpeed(getCurrentSpeed() - speedFactor() * amount);
+
     }
 }
 
