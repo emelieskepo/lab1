@@ -52,8 +52,8 @@ public class CarTest {
         saab.setTurboOn();
         assertTrue(saab.isTurboOn());
     }
-    @Test
-    private void checkDirection(String expectedDirection, Car car) {
+
+    public void checkDirection(String expectedDirection, Car car) {
         assertEquals(expectedDirection, car.getDirection());
     }
 
@@ -135,7 +135,7 @@ public class CarTest {
     @Test
     public void decrementSpeedForVolvo(){
         volvo.setCurrentSpeed(30);
-        double originalSpeed = saab.getCurrentSpeed();
+        double originalSpeed = volvo.getCurrentSpeed();
         volvo.decrementSpeed(10);
         assertEquals(Math.max(originalSpeed - volvo.speedFactor() * 10,0), volvo.getCurrentSpeed(), 0.001);
     }
