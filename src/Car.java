@@ -28,8 +28,8 @@ public abstract class Car implements Movable{ //abstrakt eftersom det inte finns
         return direction;
     }
 
-    public void setDirection(String direction){
-        this.direction = direction;
+    public double getYPos(){
+        return yPos;
     }
 
     public double getXPos(){
