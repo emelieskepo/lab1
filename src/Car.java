@@ -1,6 +1,6 @@
 import java.awt.*;
 
-public abstract class Car implements Movable{
+public abstract class Car implements Movable {
 
     private int nrDoors; // Number of doors on the car
     private double enginePower; // Engine power of the car
@@ -19,7 +19,7 @@ public abstract class Car implements Movable{
         stopEngine();
     }
 
-    public int getNrDoors(){
+    public int getNrDoors() {
         return nrDoors;
     }
 
@@ -27,39 +27,41 @@ public abstract class Car implements Movable{
         return direction;
     }
 
-    public double getYPos(){
+    public double getYPos() {
         return yPos;
     }
 
-    public double getXPos(){
+    public double getXPos() {
         return xPos;
     }
 
-    public double getEnginePower(){
+    public double getEnginePower() {
         return enginePower;
     }
 
-    public double getCurrentSpeed(){
+    public double getCurrentSpeed() {
         return currentSpeed;
     }
 
     public void setCurrentSpeed(double currentSpeed) {
-        this.currentSpeed = currentSpeed;
+        if(currentSpeed >= 0 && currentSpeed <= this.enginePower){
+            this.currentSpeed = currentSpeed;
+        }
     }
 
-    public Color getColor(){
+    public Color getColor() {
         return color;
     }
 
-    public void setColor(Color clr){
+    public void setColor(Color clr) {
         color = clr;
     }
 
-    public void startEngine(){
+    public void startEngine() {
         currentSpeed = 0.1;
     }
 
-    public void stopEngine(){
+    public void stopEngine() {
         currentSpeed = 0;
     }
 
@@ -69,7 +71,7 @@ public abstract class Car implements Movable{
 
     public abstract void decrementSpeed(double amount);
 
-    public void move(){ //currentSpeed
+    public void move() {
         switch (direction) {
             case "NORTH" -> this.yPos += getCurrentSpeed();
             case "EAST" -> this.xPos += getCurrentSpeed();
@@ -78,7 +80,7 @@ public abstract class Car implements Movable{
         }
     }
 
-    public void turnLeft(){
+    public void turnLeft() {
         switch (direction) {
             case "NORTH" -> this.direction = "WEST";
             case "EAST" -> this.direction = "NORTH";
@@ -87,9 +89,9 @@ public abstract class Car implements Movable{
         }
     }
 
-    public void turnRight(){
+    public void turnRight() {
         switch (direction) {
-            case "WEST" -> this.direction = "NORTH"; //såhär eller setDirection
+            case "WEST" -> this.direction = "NORTH";
             case "NORTH" -> this.direction = "EAST";
             case "EAST" -> this.direction = "SOUTH";
             case "SOUTH" -> this.direction = "WEST";
