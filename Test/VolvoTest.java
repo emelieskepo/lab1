@@ -3,7 +3,8 @@ import static org.junit.Assert.*;
 
 
 public class VolvoTest {
-    public Volvo240 volvo = new Volvo240();
+
+    private Volvo240 volvo = new Volvo240();
 
     @Test
     public void volvoCheckSpeedFactor(){

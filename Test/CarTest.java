@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 
 public class CarTest {
 
-    public Saab95 saab = new Saab95();
+    private Saab95 saab = new Saab95();
 
 
     @Test

@@ -2,7 +2,8 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class SaabTest {
-    public Saab95 saab = new Saab95();
+
+    private Saab95 saab = new Saab95();
 
     @Test
     public void setTurboOnSaab(){
